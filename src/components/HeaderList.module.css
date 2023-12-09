@@ -1,0 +1,27 @@
+.headerList {
+    display: flex;
+    width: 100%;
+    max-width: 736px;
+    margin: 4rem auto 1.5rem auto;
+    font-size: 0.875rem;
+    font-weight: bold;
+    justify-content: space-between;
+   
+}
+
+.createdInfo {
+    color: var(--blue);
+}
+
+.completedInfo {
+    color: var(--purple);
+}
+
+
+.headerList span {
+    font-size: 0.75rem;
+    border-radius: 9px;
+    padding: 2px 8px;
+    background: var(--gray-400);
+    color: var(--gray-200);
+}
