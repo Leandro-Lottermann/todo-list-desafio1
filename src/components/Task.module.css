@@ -1,10 +1,96 @@
 .task {
     width: 100%;
     max-width: 736px;
-    margin: auto;
+    margin: 0.75rem auto;
+
     display: flex;
+    align-items: flex-start;
+
+    padding: 1rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    background: var(--gray-500);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+    gap: 12px;
 }
 
-.taskCheckBox { 
-    height: 20px;
+.taskCheckbox { 
+    display: none;
+
 }
+
+.taskSpan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.125rem;
+    width: 1.125rem;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.checkbox-unchecked {
+    border: 2px solid var(--blue); 
+    transition: 0.1s;
+}
+
+.checkbox-unchecked:hover {
+    border: 2px solid var(--blue-dark); 
+    background-color: rgba(30, 111, 159, 0.2);
+}
+
+.checkbox-checked {
+    background: var(--purple-dark); 
+}
+
+.checkbox-checked:hover {
+    background-color: var(--purple); 
+    transition: 0.1s;
+}
+
+.taskSpan > svg {
+    color: var(--gray-100);
+}
+
+.taskContent {
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 140%;
+    padding: 0;
+    flex: 1 0 0;
+}
+
+.task-content-checked {
+    text-decoration: line-through;
+    color: var(--gray-300);
+}
+
+.taskButton {
+    border: 0;
+    border-radius: 8px;
+    background: var(--gray-500);
+    padding: 6px;
+    cursor: pointer;
+    display: inline-flex; 
+    /* usei isso para centralizar o icone e nao ficar sobrando o botton */
+    transition: 0.1s;
+    
+}
+
+.taskButton:hover  {
+    background: var(--gray-400);
+    
+}
+
+.taskButton svg {
+    color: var(--gray-300);
+    transition: 0.1s;
+    
+}
+
+.taskButton:hover svg {
+    color: var(--danger);
+}
+

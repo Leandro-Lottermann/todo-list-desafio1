@@ -7,25 +7,61 @@ import { FormNewTask } from "./components/FormNewTask";
 import { HeaderList } from "./components/HeaderList";
 import { NoTasksView } from "./components/NoTasksView";
 import { Task } from "./components/Task";
-import { v4 as uuidv4  } from "uuid";
+
+import { useState } from "react";
 
 
 export interface TaskInterface {
-  id: string;
+  id: number;
   content: string;
   isCompleted: boolean;
 }
 
-let taskList: TaskInterface[] = [{id: uuidv4(),content: "Fazer a tasklist", isCompleted: false}, {id: uuidv4(),content: "Fazer a tasklist com checked", isCompleted: true}]
 
 export function App() {
+  const [tasks, setTasks] = useState<TaskInterface[]>([]);
   
+  function onNewTask(content: string) {
+    const newTask: TaskInterface = {
+      id: new Date().getTime(),
+      content,
+      isCompleted: false,
+    } 
+    setTasks(() => {
+      return [...tasks, newTask];
+    });
+  }
+
+  
+  
+  function onCompleteTask({ id, value }: { id: number; value: boolean }): void {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isCompleted: value }
+      }
+
+      return { ...task }
+    })
+
+    setTasks(updatedTasks)
+  }
+
+  console.log(tasks)
+
+
   return (
     <>
       <Header/>
-      <FormNewTask/>
+      <FormNewTask onNewTask={onNewTask}/>
       <HeaderList totalCreatedTasks={0} totalCompletedTasks={0}/>
-      {!taskList.length ? <NoTasksView /> : taskList.map(task => <Task task={task} key={task.id}/>)}
+      {tasks.length > 0 ?  (
+        <div>
+          {tasks.map(task => <Task key={task.id} task={task}  toggleTaskStatus={onCompleteTask}/>)
+        }
+        </div>
+        ) : (
+        <NoTasksView/>)
+      }
       
     </>
   );
