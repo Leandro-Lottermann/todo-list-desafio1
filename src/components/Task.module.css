@@ -1,0 +1,10 @@
+.task {
+    width: 100%;
+    max-width: 736px;
+    margin: auto;
+    display: flex;
+}
+
+.taskCheckBox { 
+    height: 20px;
+}
